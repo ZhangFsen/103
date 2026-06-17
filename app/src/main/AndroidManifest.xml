@@ -1,0 +1,80 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
+
+    <application android:theme="@style/AppTheme" android:label="秒记账" android:icon="@drawable/ic_launcher_neutral" android:roundIcon="@drawable/ic_launcher_neutral" android:allowBackup="true" android:supportsRtl="true">
+        <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop" android:screenOrientation="portrait"/>
+        <activity-alias android:name=".LauncherOrange" android:enabled="true" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_orange" android:roundIcon="@drawable/ic_launcher_orange" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".LauncherGreen" android:enabled="false" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_green" android:roundIcon="@drawable/ic_launcher_green" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".LauncherBlue" android:enabled="false" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_blue" android:roundIcon="@drawable/ic_launcher_blue" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".LauncherPurple" android:enabled="false" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_purple" android:roundIcon="@drawable/ic_launcher_purple" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".LauncherSakura" android:enabled="false" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_sakura" android:roundIcon="@drawable/ic_launcher_sakura" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".LauncherLatte" android:enabled="false" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_latte" android:roundIcon="@drawable/ic_launcher_latte" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".LauncherDark" android:enabled="false" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_dark" android:roundIcon="@drawable/ic_launcher_dark" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias android:name=".LauncherMinimal" android:enabled="false" android:exported="true" android:label="秒记账" android:icon="@drawable/ic_launcher_minimal" android:roundIcon="@drawable/ic_launcher_minimal" android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <service android:name=".FloatingWindowService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="悬浮记账按钮保持显示"/>
+        </service>
+
+        <service
+            android:name=".PaymentNotificationListenerService"
+            android:label="秒记账收付款识别"
+            android:exported="true"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService"/>
+            </intent-filter>
+        </service>
+        <receiver android:name=".PaymentSuggestionReceiver" android:exported="false"/>
+        <receiver android:name=".ReminderReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
